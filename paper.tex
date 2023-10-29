@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{url}
+
+\title{Title of Your Research Paper}
+\author{Anastasiia Iakovleva, Yannick Westermann}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+brief summary of the paper
+\end{abstract}
+
+\section{Introduction}\label{sec:introduction}
+\input{./tex/sections/introduction.tex}
+
+\section{Data Analytics in Cybercrime}\label{sec:data-analytics}
+\input{./tex/sections/data-analytics.tex}
+
+\section{Methodology}\label{sec:methodology}
+\input{./tex/sections/methodology.tex}
+
+\section{Results}\label{sec:results}
+\input{./tex/sections/results.tex}
+
+\section{Discussion}\label{sec:discussion}
+\input{./tex/sections/discussion.tex}
+
+\section{Conclusion}\label{sec:conclusion}
+\input{./tex/sections/conclusion.tex}
+
+\section*{References}\label{sec:references}
+\input{./tex/sections/references.tex}
+
+\end{document}
