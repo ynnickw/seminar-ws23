@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\renewcommand\maketitle{
+  \begin{titlepage}
+    \centering
+    \includegraphics[width=0.3\textwidth]{./assets/tum-logo.png} 
+    \vspace{1cm}
+
+    \Large
+    Data Analytics for Cybercrime and Undesirable Online Behaviors
+    \vspace{2cm}
+
+    \Huge
+    \thetitle
+    \vspace{2cm}
+
+    \Large
+    Anastasiia Iakovleva, Yannick Westermann
+    \vspace{1cm}
+
+    \normalsize
+    Date: \today
+    \vspace{1cm}
+
+    \begin{abstract}
+        \lipsum[1]
+    \end{abstract}
+  \end{titlepage}
+}
+
+\title{Title}
+\author{Anastasiia Iakovleva, Yannick Westermann}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}\label{sec:introduction}
+\input{./tex/sections/introduction.tex}
+
+\section{Data Analytics in Cybercrime}\label{sec:data-analytics}
+\input{./tex/sections/data-analytics.tex}
+
+\section{Methodology}\label{sec:methodology}
+\input{./tex/sections/methodology.tex}
+
+\section{Results}\label{sec:results}
+\input{./tex/sections/results.tex}
+
+\section{Discussion}\label{sec:discussion}
+\input{./tex/sections/discussion.tex}
+
+\section{Conclusion}\label{sec:conclusion}
+\input{./tex/sections/conclusion.tex}
+
+\section{Attachments}\label{sec:attachments}
+\input{./tex/sections/attachments.tex}
+
+\section{References}\label{sec:references}
+\input{./tex/sections/references.tex}
+
+\end{document}
