@@ -3,9 +3,10 @@ Bachelor/Master-Seminar - Data Analytics for Cybercrime and Undesirable Online B
 
 ### Python setup
 Using a virtual environment is recommended
-´´´
-pip install requirements.txt
-´´´
+
+### Setup database
+run database-setup.ipynb
+
 
 ### Structure of the paper
 
