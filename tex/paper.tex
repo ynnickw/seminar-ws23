@@ -5,6 +5,10 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{titling}
+\usepackage{caption} 
+\usepackage{array} 
+\usepackage{geometry}
+\usepackage{subcaption}
 
 \renewcommand\maketitle{
   \begin{titlepage}
@@ -17,7 +21,7 @@
     \vspace{2cm}
 
     \Huge
-    \thetitle
+    \thetitle{}
     \vspace{2cm}
 
     \Large
@@ -47,27 +51,21 @@
 \newpage
 
 \section{Introduction}\label{sec:introduction}
-\input{./tex/sections/introduction.tex}
+\input{./sections/introduction.tex}
 
-\section{Cross-Device Tracking techniques}\label{sec:data-analytics}
-\input{./tex/sections/techniques.tex}
+\section{Study}\label{sec:methodology}
+\input{./sections/study.tex}
 
-\section{Methodology}\label{sec:methodology}
-\input{./tex/sections/methodology.tex}
+\section{Comparison}\label{sec:results}
+\input{./sections/comparison.tex}
 
-\section{Results}\label{sec:results}
-\input{./tex/sections/results.tex}
-
-\section{Comparative Analysis}\label{sec:discussion}
-\input{./tex/sections/comparison.tex}
-
-\section{Conclusion}\label{sec:conclusion}
-\input{./tex/sections/conclusion.tex}
+\section{Limitations and difficulties}\label{sec:conclusion}
+\input{./sections/limitations.tex}
 
 \section{Attachments}\label{sec:attachments}
-\input{./tex/sections/attachments.tex}
+\input{./sections/appendix.tex}
 
 \section{References}\label{sec:references}
-\input{./tex/sections/references.tex}
+\input{./sections/references.tex}
 
 \end{document}
