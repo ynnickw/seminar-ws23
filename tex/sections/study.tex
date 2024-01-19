@@ -87,17 +87,76 @@ Our plan was to conduct the previous analysis again, but this time to differenti
 
 \subsection{Results}
 \subsubsection{Requests to third party domains}
-\subsubsection{Requests to third party domains}
 \includegraphics[width=0.95\textwidth]{./assets/top20thirdpartydomains.png}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+      \textbf{Amazon}\\
+      media-amazon.com\\
+      ssl-images-amazon.com\\
+      amazon-adsystem.com\\
+      amazon.com\\
+      cloudfront.net\\
+      amazonaws.com\\
+  
+      \vspace{0.1cm}
+  
+      \textbf{Google}\\ 
+      doubleclick.net\\
+      googlesyndication.com\\
+      google.com\\
+      google-analytics.com\\
+      gstatic.com\\
+      googletagmanager.com\\
+      googletagservices.com\\
+      google.de\\
+      googleapis.com\\
+      googleadservices.com\\
+      recaptcha.net\\
+      youtube.com\\
+      ytimg.com
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.6\textwidth}
+      In our test runs on news and shopping sites we were able to identify links to a total of 537 different third-party domains. Overall, it was noticeable that most of the domains we found were connected to or part of Google and Amazon (see table). But we were also able to collect queries to other major tech companies such as Microsoft, Facebook and even TikTok. This shows once again how big a role these companies play in the context of online user tracking. Of course, this doesn't prove cross-device tracking, but it does give us an indication of how much data is being shared with third parties, and the likelihood that this data is being used to create accurate user profiles.
+    \end{minipage}
+  \end{figure}
 
 \includegraphics[width=0.95\textwidth]{./assets/mostConnectionsToThirdPartyDomains.png}
 
-\subsubsection{Sensitive Information to third party providers}
-\includegraphics[width=0.95\textwidth]{./assets/websitesSharingMailAddresses.png}
 
-\includegraphics[width=0.95\textwidth]{./assets/top20thirdpartydomainsreceivingmailaddresses.png}
+\subsubsection{Sensitive Information to third party providers}
+In the study of sensitive information sharing with third parties, particularly focusing on email data, both hashed and plain, significant insights were revealed. The analysis centered on tracking the flow of email addresses to various third-party websites. The findings indicate a diverse range of websites receiving this sensitive data, with notable variations in the frequency and method of information sharing.
+
+\includegraphics[width=0.8\textwidth]{./assets/websitesSharingMailAddresses.png}
+
+Moreover, when analyzing the encryption methods used, a predominant reliance on SHA256 hashing is observed. This pattern suggests a general preference for SHA256 as a security measure in the transfer of email data. However, instances of plain text email sharing are not absent, as evidenced by c2.piano.io and news.google.com, which shared email addresses 8 and 7 times, respectively, without encryption.
+
+\includegraphics[width=0.8\textwidth]{./assets/top20thirdpartydomainsreceivingmailaddresses.png}
+
+It should be noted that almost half of all email address transfers were initiated by Sephora. The sensitive data was in turn shared with big tech companies such as Facebook, Google and surprisingly even Snapchat and TikTok.
+
+These findings raise critical discussions about the privacy and security measures in place for the transfer of sensitive data like email addresses. The varied use of encryption methods, along with the sheer number of third parties involved, highlights the complexity and potential vulnerabilities in the current digital landscape regarding data privacy.
+
 
 \subsubsection{Cookie Analysis}
 \includegraphics[width=0.95\textwidth]{./assets/thirdpartieswithmostcookiesset.png}
 
+Certain domains, such as adnxs.com (AppNexus), taboola.com and rubiconproject.com showed a high frequency in cookies set and amount of connections from our test websites and were leading in terms of the number of requests, which indicates their comprehensive role in tracking and advertising across multiple platforms.
+
+This underscores their significant role in the digital advertising ecosystem, especially in cross-device tracking. Amazon, through domains like amazon-adsystem.com and Google through domains like youtube.com, emerged as prominent trackers as well, but surprisingly despite having registered a high number of connections from our test websites, were much less dominant in cookie setting in comparison to the previously mentioned competing providers. 
+
+This finding suggests, that the big players are more likely to use alternative tracking mechanisms beyond traditional cookies, possibly including fingerprinting or pixel tracking.This finding aligns with its vast online presence and interest in user data for both e-commerce and advertising purposes.
+
+The high volume of cookies set by these entities in genereal suggests an extensive network of data collection, crucial for building comprehensive user profiles across different devices.
+
+
 \subsubsection{Duplicate identifiers across mibile and desktop devices}
+As we have logged in in the beginning of all our test runs, it is likely that the websites have cross device tracked the test user via deterministic cross device tracking. Our analysis revealed several cookies with equal values across devices, indicating their potential use as cross-device identifiers. The relevant output can be found in appendix 1 and include:
+\begin{enumerate}
+    \item DSID and User IDs: Various user ID cookies, were consistently found across devices. For instance, userId in faz.net and authId in sueddeutsche.de, with their unique alphanumeric strings, suggest a potential for user-specific identification across different browsing sessions and devices.
+    \item Encoded and Hashed Values: Cookies with base64 encoded strings (e.g., u in cnn.com) or hash values (e.g., hasheduseremail in sephora.de) were identified as consistent across devices. These formats are typically used to encode identifiable information in a non-readable format, enhancing security while still allowing for user tracking.
+    \item Unique Device or Session Identifiers: Cookies like UUID in merkur.de, with values that seem to be unique to each user, appeared consistently across different devices. This uniqueness is a strong indicator of their role in cross-device identification.
+\end{enumerate}
+The presence of equal identifiers across devices underscores the sophisticated nature of current online tracking methodologies. These identifiers enable a seamless tracking experience, allowing advertisers and websites to create comprehensive user profiles by linking activities across multiple devices. This capability has significant implications for targeted advertising and personalized content delivery.
