@@ -89,10 +89,9 @@ Our plan was to conduct the previous analysis again, but this time to differenti
 \subsubsection{Requests to third party domains}
 \includegraphics[width=0.8\textwidth]{./assets/top20thirdpartydomains.png}
 
-In our test runs on news and shopping sites we were able to identify links to a total of 537 different third-party domains. Overall, it was noticeable that most of the domains we found were connected to or part of Google and Amazon (see Table 1).
+In our test runs on news and shopping sites, we were able to identify links to a total of 537 different third-party domains. Some of the domains were operated by the website that we observed. For example theguardian.com connected to guardianapps.co.uk which is obviously operated by the same company and is no third party. We tried to filter out the majority of all domains that belong to the same company as the website we were observing, but it is possible, that we missed some. Additionally, it was noticeable that most of the domains we found were connected to or part of Google and Amazon (see table). But we were also able to collect queries to other major tech companies such as Microsoft, Facebook and even TikTok. 
 
-But we were also able to collect queries to other major tech companies such as Microsoft, Facebook and even TikTok. This shows once again how big a role these companies play in the context of online user tracking. Of course, this doesn't prove cross-device tracking, but it does give us an indication of how much data is being shared with third parties, and the likelihood that this data is being used to create accurate user profiles.
-
+This shows once again how big a role these companies play in the context of online user tracking. Of course, this doesn't prove cross-device tracking, but it does give us an indication of how much data is being shared with third parties, and the likelihood that this data is being used to create accurate user profiles.
 \begin{table}[ht]
 \small
 \centering
@@ -123,7 +122,11 @@ amazonaws.com & googletagmanager.com \\
 \includegraphics[width=0.8\textwidth]{./assets/mostConnectionsToThirdPartyDomains.png}
 \vspace{0.5cm}
 
-You can see that more than half of all websites have made more than 1000 requests to third party domains. Four websites even made more than 2000 requests. The numbers at the end of each bar represent the number of different third party domains that the respective website has requested. On average, 1416 requests to 72 different third party domains were recorded per website. One notable exception here is amazon.de, which has the second most requests in total, but these only went to 17 different domains. This could be due to the fact that they use their own services for cross device tracking activities and therefore do not include many different other providers
+We observed that more than half of all websites have made more than 1000 requests to third party domains. Four websites even made more than 2000 requests. 
+
+The bar chart illustrates the diversity of third-party domain connections by showing the number of unique domains to which each site communicated. On average, a website made 1,416 requests to approximately 72 different third-party domains. This is typical of the complex network of third party services that modern sites rely on.
+
+A notable exception case is Amazon, which had the second highest total number of requests but interacted with only 17 unique domains. This anomaly could indicate a reliance on a select set of services, possibly indicating Amazons strategy of using proprietary systems for cross-device tracking and other functions, thereby limiting interactions with external third parties. Such a strategy could reflect enhanced data control measures and a consolidated approach to digital tracking.
 
 \subsubsection{Sensitive Information to third party providers}
 In the study of sensitive information sharing with third parties, particularly focusing on email data, both hashed and plain, significant insights were revealed. The analysis centered on tracking the flow of email addresses to various third-party websites. The findings indicate a diverse range of websites receiving this sensitive data, with notable variations in the frequency and method of information sharing.
@@ -159,3 +162,9 @@ As we have logged in in the beginning of all our test runs, it is likely that th
     \item Unique Device or Session Identifiers: Cookies like UUID in merkur.de, with values that seem to be unique to each user, appeared consistently across different devices. This uniqueness is a strong indicator of their role in cross-device identification.
 \end{enumerate}
 The presence of equal identifiers across devices underscores the sophisticated nature of current online tracking methodologies. These identifiers enable a seamless tracking experience, allowing advertisers and websites to create comprehensive user profiles by linking activities across multiple devices. This capability has significant implications for targeted advertising and personalized content delivery.
+
+The results suggest that once websites have established a user's identity using deterministic methods, as indicated by cookies such as userId and authId, the next step is often cookie synchronisation. This process involves passing unique identifiers to third parties who can then use them to match the user's profile in their own databases. For example, the consistent appearance of UUID cookies across devices provides a solid foundation for synchronisation processes. The transfer of such cookies to different domains, as evidenced by the breadth of cookie syncing in our data, implies a sophisticated network where user information is exchanged to allocate a user to one or more devices.
+
+The implications of cookie syncing are magnified when considered in the context of graph sharing. By piecing together data points from multiple sources, companies create comprehensive graphs that map a user's digital footprint across multiple devices. These graphs are not static; they are dynamic, evolving with each user interaction and feeding into algorithms that refine the understanding of user behaviour.
+
+Given that identifiers such as DSID and hashed values such as hasheduseremail are consistent across devices, the likelihood of these being used to create cross-device graphs is high. The entities that receive these synchronised cookie values, such as third party advertising technology domains, are willing to construct or contribute to the construction of these graphs.
