@@ -69,7 +69,7 @@ The resulting data set comprised 40 HAR files - 10 from desktop devices and 10 f
         \caption{thirdPartyLog}
     \end{subtable}
 \end{figure}
-Since our data is relatively large (50-100MB per HTTP archive), we performed most of the analysis using Jupyter Notebooks and the Python library haralyzer. In the initial stages of our data analysis, we began with a traditional approach, using print statements to inspect and debug the data. This method, while straightforward, quickly proved to be inadequate for handling larger datasets. As the volume and complexity of the data increased, it became apparent that a more robust and scalable solution was necessary. We then started to set up a database that includes three tables as displayed above, so we can perform the major part of our analysis with a small delay using simple SQL statements.
+Since our data is relatively large (50-100MB per HTTP archive), we performed most of the analysis using Jupyter Notebooks and the Python library haralyzer. In the initial stages of our data analysis, we began with a traditional approach, using print statements to inspect and debug the data. This method, while straightforward, quickly proved to be inadequate for handling larger datasets. As the volume and complexity of the data increased, it became apparent that a more robust and scalable solution was necessary. We then started to set up a database that includes three tables in the following way, so we can perform the major part of our analysis with a small delay using simple SQL statements in combination with python scripts. The query results were then visualized using diagrams.
 
 Our approach was then to determine which parts of the HTTP requests are relevant for us to make statements about cross-device tracking activities.
 
@@ -87,44 +87,43 @@ Our plan was to conduct the previous analysis again, but this time to differenti
 
 \subsection{Results}
 \subsubsection{Requests to third party domains}
-\includegraphics[width=0.95\textwidth]{./assets/top20thirdpartydomains.png}
+\includegraphics[width=0.8\textwidth]{./assets/top20thirdpartydomains.png}
 
-\begin{figure}[htbp]
-    \centering
-    \begin{minipage}[t]{0.25\textwidth}
-      \textbf{Amazon}\\
-      media-amazon.com\\
-      ssl-images-amazon.com\\
-      amazon-adsystem.com\\
-      amazon.com\\
-      cloudfront.net\\
-      amazonaws.com\\
-  
-      \vspace{0.1cm}
-  
-      \textbf{Google}\\ 
-      doubleclick.net\\
-      googlesyndication.com\\
-      google.com\\
-      google-analytics.com\\
-      gstatic.com\\
-      googletagmanager.com\\
-      googletagservices.com\\
-      google.de\\
-      googleapis.com\\
-      googleadservices.com\\
-      recaptcha.net\\
-      youtube.com\\
-      ytimg.com
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.6\textwidth}
-      In our test runs on news and shopping sites we were able to identify links to a total of 537 different third-party domains. Overall, it was noticeable that most of the domains we found were connected to or part of Google and Amazon (see table). But we were also able to collect queries to other major tech companies such as Microsoft, Facebook and even TikTok. This shows once again how big a role these companies play in the context of online user tracking. Of course, this doesn't prove cross-device tracking, but it does give us an indication of how much data is being shared with third parties, and the likelihood that this data is being used to create accurate user profiles.
-    \end{minipage}
-  \end{figure}
+In our test runs on news and shopping sites we were able to identify links to a total of 537 different third-party domains. Overall, it was noticeable that most of the domains we found were connected to or part of Google and Amazon (see Table 1).
 
-\includegraphics[width=0.95\textwidth]{./assets/mostConnectionsToThirdPartyDomains.png}
+But we were also able to collect queries to other major tech companies such as Microsoft, Facebook and even TikTok. This shows once again how big a role these companies play in the context of online user tracking. Of course, this doesn't prove cross-device tracking, but it does give us an indication of how much data is being shared with third parties, and the likelihood that this data is being used to create accurate user profiles.
 
+\begin{table}[ht]
+\small
+\centering
+\begin{tabularx}{0.6\textwidth}{|X|X|}
+\hline
+\textbf{Amazon} & \textbf{Google} \\
+\hline
+media-amazon.com & doubleclick.net \\
+ssl-images-amazon.com & googlesyndication.com \\
+amazon-adsystem.com & google.com \\
+amazon.com & google-analytics.com \\
+cloudfront.net & gstatic.com \\
+amazonaws.com & googletagmanager.com \\
+ & googletagservices.com \\
+ & google.de \\
+ & googleapis.com \\
+ & googleadservices.com \\
+ & recaptcha.net \\
+ & youtube.com \\
+ & ytimg.com \\
+\hline
+\end{tabularx}
+\caption{third-party domains related to Amazon and Google}
+\label{tab:third-party-domains}
+\end{table}
+
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{./assets/mostConnectionsToThirdPartyDomains.png}
+\vspace{0.5cm}
+
+You can see that more than half of all websites have made more than 1000 requests to third party domains. Four websites even made more than 2000 requests. The numbers at the end of each bar represent the number of different third party domains that the respective website has requested. On average, 1416 requests to 72 different third party domains were recorded per website. One notable exception here is amazon.de, which has the second most requests in total, but these only went to 17 different domains. This could be due to the fact that they use their own services for cross device tracking activities and therefore do not include many different other providers
 
 \subsubsection{Sensitive Information to third party providers}
 In the study of sensitive information sharing with third parties, particularly focusing on email data, both hashed and plain, significant insights were revealed. The analysis centered on tracking the flow of email addresses to various third-party websites. The findings indicate a diverse range of websites receiving this sensitive data, with notable variations in the frequency and method of information sharing.
@@ -141,7 +140,7 @@ These findings raise critical discussions about the privacy and security measure
 
 
 \subsubsection{Cookie Analysis}
-\includegraphics[width=0.95\textwidth]{./assets/thirdpartieswithmostcookiesset.png}
+\includegraphics[width=0.8\textwidth]{./assets/thirdpartieswithmostcookiesset.png}
 
 Certain domains, such as adnxs.com (AppNexus), taboola.com and rubiconproject.com showed a high frequency in cookies set and amount of connections from our test websites and were leading in terms of the number of requests, which indicates their comprehensive role in tracking and advertising across multiple platforms.
 
