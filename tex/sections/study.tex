@@ -69,6 +69,8 @@ The resulting data set comprised 40 HAR files - 10 from desktop devices and 10 f
         \caption{thirdPartyLog}
     \end{subtable}
 \end{figure}
+\vspace{0.5cm}
+
 Since our data is relatively large (50-100MB per HTTP archive), we performed most of the analysis using Jupyter Notebooks and the Python library haralyzer. In the initial stages of our data analysis, we began with a traditional approach, using print statements to inspect and debug the data. This method, while straightforward, quickly proved to be inadequate for handling larger datasets. As the volume and complexity of the data increased, it became apparent that a more robust and scalable solution was necessary. We then started to set up a database that includes three tables in the following way, so we can perform the major part of our analysis with a small delay using simple SQL statements in combination with python scripts. The query results were then visualized using diagrams.
 
 Our approach was then to determine which parts of the HTTP requests are relevant for us to make statements about cross-device tracking activities.
@@ -144,6 +146,7 @@ These findings raise critical discussions about the privacy and security measure
 
 \subsubsection{Cookie Analysis}
 \includegraphics[width=0.8\textwidth]{./assets/thirdpartieswithmostcookiesset.png}
+\vspace{0.8cm}
 
 Certain domains, such as adnxs.com (AppNexus), taboola.com and rubiconproject.com showed a high frequency in cookies set and amount of connections from our test websites and were leading in terms of the number of requests, which indicates their comprehensive role in tracking and advertising across multiple platforms.
 
