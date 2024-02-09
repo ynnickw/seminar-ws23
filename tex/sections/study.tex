@@ -137,12 +137,15 @@ In the study of sensitive information sharing with third parties, particularly f
 
 Moreover, when analyzing the encryption methods used, a predominant reliance on SHA256 hashing is observed. This pattern suggests a general preference for SHA256 as a security measure in the transfer of email data. However, instances of plain text email sharing are not absent, as evidenced by c2.piano.io and news.google.com, which shared email addresses 8 and 7 times, respectively, without encryption.
 
-\includegraphics[width=0.8\textwidth]{./assets/top20thirdpartydomainsreceivingmailaddresses.png}
+\includegraphics[width=0.8\textwidth]{./assets/thirdpartydomainsreceivingemailaddresses.png}
 
-It should be noted that almost half of all email address transfers were initiated by Sephora. The sensitive data was in turn shared with big tech companies such as Facebook, Google and surprisingly even Snapchat and TikTok.
+We filtered out any subdomains of our test websites for this visualization in advance including domains that are obviously relating to one of them (e.g zalando.com, nikecloud.com, user.id depot.com). Notably, spehora.de stood out for initiating nearly half of all email address transfers, often sharing data with major tech companies, including Facebook, Google, and even platforms like Snapchat and TikTok. This demonstrates the depth and breadth of data sharing practices and underscores the potential risks to user privacy, especially when it involves sharing sensitive information like email addresses. We considered this particular case as very interesting and thus conducted a follow up analysis of the sensitive data sharing activity of sephora.de.
 
-These findings raise critical discussions about the privacy and security measures in place for the transfer of sensitive data like email addresses. The varied use of encryption methods, along with the sheer number of third parties involved, highlights the complexity and potential vulnerabilities in the current digital landscape regarding data privacy.
+\includegraphics[width=0.8\textwidth]{./assets/sephoracase.png}
 
+Approximately 70\% of our total recorded email forwards go to 78\% of the total recorded third-party recipients originating from sephora.de. Almost every domain receiving the sensitive data is associated with tracking user activity and potentially uses the mail adress to create user graphs. Especially Google Analytics is increasingly recognized for its crucial role in cross-device tracking, which is becoming an essential aspect of understanding user behavior across different platforms and devices\footnote{\href{https://www.optimizesmart.com/cross-device-reports-in-google-analytics-via-google-signals/}{https://www.optimizesmart.com/cross-device-reports-in-google-analytics-via-google-signals/}}. Furthermore, the small share of mobile to desktop devices sharing sensitive data is also interesting, but we will investigate this mor ein detail in Part 3 of this paper.
+
+In conclusion, the explained findings raise critical discussions about the privacy and security measures in place for the transfer of sensitive data like email addresses. The varied use of encryption methods, along with the sheer number of third parties involved, highlights the complexity and potential vulnerabilities in the current digital landscape regarding data privacy.
 
 \subsubsection{Cookie Analysis}
 \includegraphics[width=0.8\textwidth]{./assets/thirdpartieswithmostcookiesset.png}
