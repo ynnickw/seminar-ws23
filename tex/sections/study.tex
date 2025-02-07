@@ -131,19 +131,29 @@ The bar chart illustrates the diversity of third-party domain connections by sho
 A notable exception case is Amazon, which had the second highest total number of requests but interacted with only 17 unique domains. This anomaly could indicate a reliance on a select set of services, possibly indicating Amazons strategy of using proprietary systems for cross-device tracking and other functions, thereby limiting interactions with external third parties. Such a strategy could reflect enhanced data control measures and a consolidated approach to digital tracking.
 
 \subsubsection{Sensitive Information to third party providers}
-In the study of sensitive information sharing with third parties, particularly focusing on email data, both hashed and plain, significant insights were revealed. The analysis centered on tracking the flow of email addresses to various third-party websites. The findings indicate a diverse range of websites receiving this sensitive data, with notable variations in the frequency and method of information sharing.
+The investigation into the disclosure of sensitive information to third parties, in particular email data, both in encrypted and unencrypted form, yielded important findings. The analysis focused on tracking the flow of email addresses to various third party websites. The results show that there are a variety of websites receiving this sensitive data, with the frequency and method of information sharing varying significantly. We filtered out any subdomains of our test websites for this visualization in advance including domains that are obviously relating to one of them (e.g zalando.com, nikecloud.com, user.id depot.com).
 
-\includegraphics[width=0.8\textwidth]{./assets/websitesSharingMailAddresses.png}
-
-Moreover, when analyzing the encryption methods used, a predominant reliance on SHA256 hashing is observed. This pattern suggests a general preference for SHA256 as a security measure in the transfer of email data. However, instances of plain text email sharing are not absent, as evidenced by c2.piano.io and news.google.com, which shared email addresses 8 and 7 times, respectively, without encryption.
-
+\vspace{0.5cm}
 \includegraphics[width=0.8\textwidth]{./assets/thirdpartydomainsreceivingemailaddresses.png}
+\vspace{0.5cm}
 
-We filtered out any subdomains of our test websites for this visualization in advance including domains that are obviously relating to one of them (e.g zalando.com, nikecloud.com, user.id depot.com). Notably, spehora.de stood out for initiating nearly half of all email address transfers, often sharing data with major tech companies, including Facebook, Google, and even platforms like Snapchat and TikTok. This demonstrates the depth and breadth of data sharing practices and underscores the potential risks to user privacy, especially when it involves sharing sensitive information like email addresses. We considered this particular case as very interesting and thus conducted a follow up analysis of the sensitive data sharing activity of sephora.de.
+When analyzing the encryption methods used, it is noticeable that the hashing method **`SHA256`** is predominantly used. This pattern indicates a general preference for **`SHA256`** as a security measure for the transmission of email data. However, there are also cases where emails are exchanged in plain text, as shown by **`c2.piano.io`** and **`news.google.com`**, where email addresses were exchanged unencrypted 8 and 7 times respectively.
 
+This discrepancy in data handling may also reflect the lack of consistent standards across the industry and demonstrates the need for stricter regulations to enforce the protection of personal data. To make sensitive data unreadable, at least by humans, the adoption of encryption should be considered an industry-wide priority.
+
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{./assets/websitesSharingMailAddresses.png}
+\vspace{0.5cm}
+
+In total we found, that 35\% of our test websites shared more than 200 hashed and plain versions of the test mail address in HTTP requests to third parties. It is likely that the majority of those sharings happened while logging in in the beginning of the constructed user journey as also observed by the researchers of Worcester Polytechnic Institute. In addition, they found out, that various other sensitive information such as address, age, zip code and gender was shared to third parties as well\cite{EmailLeaks}. This findings suggests, that the mail addresses we analyzed may not be the only sensitive information that was shared.
+
+Notably, spehora.de stood out for initiating nearly half of all email address transfers, often sharing data with major tech companies, including Facebook, Google, and even platforms like Snapchat and TikTok, which demonstrates the depth and breadth of data sharing practices and underscores the potential risks to user privacy, especially when it involves sharing sensitive information like email addresses. We considered this particular case as very interesting and thus conducted a follow up analysis of the sensitive data sharing activity of sephora.de.
+
+\vspace{0.5cm}
 \includegraphics[width=0.8\textwidth]{./assets/sephoracase.png}
+\vspace{0.5cm}
 
-Approximately 70\% of our total recorded email forwards go to 78\% of the total recorded third-party recipients originating from sephora.de. Almost every domain receiving the sensitive data is associated with tracking user activity and potentially uses the mail adress to create user graphs. Especially Google Analytics is increasingly recognized for its crucial role in cross-device tracking, which is becoming an essential aspect of understanding user behavior across different platforms and devices\footnote{\href{https://www.optimizesmart.com/cross-device-reports-in-google-analytics-via-google-signals/}{https://www.optimizesmart.com/cross-device-reports-in-google-analytics-via-google-signals/}}. Furthermore, the small share of mobile to desktop devices sharing sensitive data is also interesting, but we will investigate this mor ein detail in Part 3 of this paper.
+Approximately 70\% of all email forwards we track go to 78\% of all tracked third-party recipients originating from sephora.de. Almost every domain that receives the sensitive data is associated with tracking user activity and may use the email address to create user graphs. We investigated the privacy policy of sephora.de\cite{SephoraDatenschutz} and found that several of the tracked third parties are explicitly mentioned as marketing and advertising partners, e.g. Google Analytics, target2sell, Criteo and Facebook. However, there is no mention of personal information such as email addresses being passed on to them. snapchat.com and pinterest.com are not mentioned anywhere. Google Analytics in particular is increasingly recognized for its crucial role in cross-device tracking, which is becoming an essential aspect of understanding user behavior across different platforms and devices (https://www.optimizesmart.com/cross-device-reports-in-google-analytics-via-google-signals/). It is also interesting to note the low proportion of mobile devices sharing sensitive data, but we will explore this in more detail in Part 3 of this paper.
 
 In conclusion, the explained findings raise critical discussions about the privacy and security measures in place for the transfer of sensitive data like email addresses. The varied use of encryption methods, along with the sheer number of third parties involved, highlights the complexity and potential vulnerabilities in the current digital landscape regarding data privacy.
 
@@ -157,10 +167,10 @@ This underscores their significant role in the digital advertising ecosystem, es
 
 This finding suggests, that the big players are more likely to use alternative tracking mechanisms beyond traditional cookies, possibly including fingerprinting or pixel tracking.This finding aligns with its vast online presence and interest in user data for both e-commerce and advertising purposes.
 
-The high volume of cookies set by these entities in genereal suggests an extensive network of data collection, crucial for building comprehensive user profiles across different devices.
+The high volume of cookies set by these entities in general suggests an extensive network of data collection, crucial for building comprehensive user profiles across different devices.
 
 
-\subsubsection{Duplicate identifiers across mibile and desktop devices}
+\subsubsection{Duplicate identifiers across mobile and desktop devices}
 As we have logged in in the beginning of all our test runs, it is likely that the websites have cross device tracked the test user via deterministic cross device tracking. Our analysis revealed several cookies with equal values across devices, indicating their potential use as cross-device identifiers. The relevant output can be found in appendix 1 and include:
 \begin{enumerate}
     \item DSID and User IDs: Various user ID cookies, were consistently found across devices. For instance, userId in faz.net and authId in sueddeutsche.de, with their unique alphanumeric strings, suggest a potential for user-specific identification across different browsing sessions and devices.

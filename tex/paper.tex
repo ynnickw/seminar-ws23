@@ -10,6 +10,9 @@
 \usepackage{geometry}
 \usepackage{subcaption}
 \usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\addbibresource{references.bib}
 
 \renewcommand\maketitle{
   \begin{titlepage}
@@ -69,6 +72,6 @@
 \input{./sections/appendix.tex}
 
 \section{References}\label{sec:references}
-\input{./sections/references.tex}
+\printbibliography[heading=none]
 
 \end{document}
