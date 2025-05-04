@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[runin]{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}[:]
+
+\title{Seminar Paper Proposal: Cross Device Tracking}
+\author{Yannick Westermann, Anastasiia Iakovleva}
+\date{\today}
+
+\begin{document}
+\maketitle
+ 
+\section*{Introduction}
+Cross Device Tracking (CDT) is a method that is crucial in the digital landscape and
+enables the monitoring of user behavior across multiple devices. As users move seamlessly
+between smartphones, tablets, laptops and desktops, CDT provides a comprehensive
+understanding of their interactions.
+
+The relevance of CDT lies in its ability to create accurate user profiles across different
+devices, providing insights that traditional analytics tools may miss. In today’s digital
+environment, where users expect seamless experiences, CDT helps customize marketing
+strategies and user experiences for different devices.
+
+In the age of IoT and smart devices, CDT is becoming increasingly important for under-
+standing consumer behavior. However, it raises privacy concerns, so a balance between
+providing a personalized experience and user data is needed. This seminar paper aims to conduct a privacy analysis by leveraging meaningful data.
+
+\section*{Objectives}
+Our goal is to present an in-depth exploration of Cross Device Tracking, encompassing its methodologies, technologies, and practical applications. 
+The primary focus of our study involves analyzing the outgoing HTTP-Requests from a carefully selected set of websites. 
+By undertaking this examination, we want to provide valuable insights into the workings of CDT and its implications in the dynamic landscape of digital interactions.  
+
+\section*{Structure of the Paper}
+We want to structure the seminar paper into three main parts:
+\begin{itemize}
+    \item \textbf{Introduction to CDT:} Provide a clear understanding of CDT, including its definition, purpose, and an exploration of various techniques employed.
+    \item \textbf{Data Collection and Analysis:} Collect HTTP-Archives and analyze them with focus on quantifying third-party domain requests linked to CDT and examining the nature of data transmitted to these third parties in terms of origin, frequency and purpose. We also try to investigate wether the user behavior and influences the type of advertising on another device.
+    \item \textbf{Follow-up Questions and Comparative Analysis:} To add depth, we propose exploring a follow-up question, such as comparing CDT on different types of websites, for example the results of 10 news websites vs 10 social media websites. Conducting cross-country or cross-platform comparison could also lead to interesting results. This segment aims to bring out interesting insights from a comparative standpoint.
+\end{itemize}
+
+\section*{Methodology}
+Our approach begins with the careful selection of a set of websites expected to yield promising results. 
+To collect HTTP-Archives (HARs), we intend to utilize multiple test devices, ideally representing both mobile and non-mobile platforms. 
+The data collection process will be streamlined using open-source tools such as OpenWPM or Python libraries like BeautifulSoup and Selenium.
+
+For the subsequent analysis of the sizable datasets, we plan to employ the Haralyzer Python framework. 
+This choice is motivated by its efficiency in dissecting and interpreting the dataset, ensuring a comprehensive examination of the collected information.
+
+\section*{Closest academic sources}
+\begin{itemize}
+    \item \href{https://www.hillwebcreations.com/wp-content/uploads/2017/05/cross-device-tracking-to-determine-consumer-behavior-otech.pdf}{Cross-Device Tracking: Measurement and Disclosures}
+    \item \href{https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-zimmeck.pdf}{A Privacy Analysis of Cross-device Tracking}
+\end{itemize}
+
+\end{document}
