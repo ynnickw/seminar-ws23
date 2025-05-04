@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage{caption} 
+\usepackage{array} 
+\usepackage{geometry}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+\renewcommand\maketitle{
+  \begin{titlepage}
+    \centering
+    \includegraphics[width=0.3\textwidth]{./assets/tum-logo.png} 
+    \vspace{1cm}
+
+    \Large
+    Data Analytics for Cybercrime and Undesirable Online Behaviors
+    \vspace{2cm}
+
+    \Huge
+    \thetitle{}
+    \vspace{2cm}
+
+    \Large
+    Anastasiia Iakovleva, Yannick Westermann
+    \vspace{1cm}
+
+    \normalsize
+    Date: \today
+    \vspace{1cm}
+
+    \begin{abstract}
+      In this study, we address the complexities of cross-device tracking in the evolving digital ecosystem, focusing on the challenges posed by user behaviour and privacy considerations. We use python scripts to analyse large datasets from HTTP archives. Our methodology involves setting up a database to streamline analysis via SQL queries, targeting third-party domain requests, sensitive data transfer and cookie proliferation. We perform comparative analysis of cross-device behaviours and website categories to identify patterns in tracking activity. Our findings reveal intricate tracking mechanisms across devices and indicate varying levels of tracking intensity across different website categories. The study underscores the balance between effective tracking and privacy, and highlights the need for advanced solutions in CDT.
+    \end{abstract}
+  \end{titlepage}
+}
+
+\title{Cross-Device Tracking}
+\author{Anastasiia Iakovleva, Yannick Westermann}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}\label{sec:introduction}
+\input{./sections/introduction.tex}
+
+\section{Study}\label{sec:methodology}
+\input{./sections/study.tex}
+
+\section{Comparative Analysis}\label{sec:results}
+\input{./sections/comparison.tex}
+
+\section{Limitations and difficulties}\label{sec:conclusion}
+\input{./sections/limitations.tex}
+
+\newpage
+
+\section{Appendix}\label{sec:attachments}
+\input{./sections/appendix.tex}
+
+\section{References}\label{sec:references}
+\printbibliography[heading=none]
+
+\end{document}
